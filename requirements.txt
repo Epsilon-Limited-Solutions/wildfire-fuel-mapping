@@ -1,0 +1,31 @@
+# Data download and processing
+requests
+geopandas
+rasterio
+numpy
+pandas
+matplotlib
+folium
+earthengine-api
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+
+# Geospatial processing
+shapely
+pyproj
+fiona
+
+# Data science
+scikit-learn
+scipy
+
+# Utilities
+tqdm
+python-dotenv
+
+# Visualization
+streamlit
+streamlit-folium
+plotly
+pillow

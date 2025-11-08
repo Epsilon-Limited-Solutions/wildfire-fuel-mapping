@@ -1,0 +1,12 @@
+# Simplified Flask Web Framework - No heavy geospatial dependencies
+Flask==3.0.0
+flask-cors==4.0.0
+
+# Basic data handling
+numpy==1.26.2
+
+# Web Server
+gunicorn==21.2.0
+
+# Utilities
+requests==2.31.0

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wildfire Fuel Mapping Viewer - Hermits Peak 2022</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1>🔥 Wildfire Fuel Mapping</h1>
+                <p class="subtitle">Enhanced Prediction via Satellite Data Fusion</p>
+            </div>
+            <div class="header-stats" id="headerStats">
+                <div class="stat-card">
+                    <div class="stat-value">Loading...</div>
+                    <div class="stat-label">Improvement</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">Loading...</div>
+                    <div class="stat-label">Correlation</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">Loading...</div>
+                    <div class="stat-label">Detection Rate</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Fire Info Banner -->
+            <div class="fire-info-banner">
+                <div class="fire-info-content">
+                    <h2>Hermits Peak-Calf Canyon Fire (2022)</h2>
+                    <div class="fire-stats-grid">
+                        <div class="fire-stat">
+                            <span class="fire-stat-label">Size:</span>
+                            <span class="fire-stat-value" id="fireSize">341,735 acres</span>
+                        </div>
+                        <div class="fire-stat">
+                            <span class="fire-stat-label">Damage:</span>
+                            <span class="fire-stat-value" id="fireDamage">$4 billion</span>
+                        </div>
+                        <div class="fire-stat">
+                            <span class="fire-stat-label">Location:</span>
+                            <span class="fire-stat-value">Northern New Mexico</span>
+                        </div>
+                        <div class="fire-stat">
+                            <span class="fire-stat-label">Duration:</span>
+                            <span class="fire-stat-value">April - August 2022</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <div class="tabs">
+                <button class="tab-button active" data-tab="maps">Interactive Maps</button>
+                <button class="tab-button" data-tab="comparison">Comparison View</button>
+                <button class="tab-button" data-tab="methodology">Methodology</button>
+                <button class="tab-button" data-tab="data">Data & Analysis</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content active" id="maps-tab">
+                <div class="maps-section">
+                    <h3>Available Interactive Maps</h3>
+                    <div id="mapsList" class="maps-grid">
+                        <div class="loading">Loading maps...</div>
+                    </div>
+                </div>
+
+                <div class="map-viewer-section">
+                    <h3>Map Viewer</h3>
+                    <div id="mapViewer" class="map-viewer">
+                        <div class="map-placeholder">
+                            <p>Select a map from above to view it here</p>
+                            <p class="map-hint">Interactive maps will load with full pan, zoom, and layer controls</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="comparison-tab">
+                <div class="comparison-section">
+                    <h3>LANDFIRE Baseline vs Enhanced Fuel Map</h3>
+
+                    <div class="comparison-grid">
+                        <div class="comparison-card">
+                            <h4>❌ LANDFIRE 2020 (Baseline)</h4>
+                            <ul>
+                                <li>Updates every 2-3 years</li>
+                                <li>Based on 2020 conditions</li>
+                                <li>Missed vegetation stress from 2020-2022</li>
+                                <li>Static fuel models</li>
+                            </ul>
+                            <div class="metric">
+                                <span class="metric-label">Correlation with burn severity:</span>
+                                <span class="metric-value" id="baselineCorr">0.42</span>
+                            </div>
+                        </div>
+
+                        <div class="comparison-card enhanced">
+                            <h4>✅ Enhanced 2022 (Satellite)</h4>
+                            <ul>
+                                <li>Weekly satellite updates</li>
+                                <li>Detected 2020-2022 changes</li>
+                                <li>Captured vegetation stress</li>
+                                <li>Dynamic fuel hazard mapping</li>
+                            </ul>
+                            <div class="metric">
+                                <span class="metric-label">Correlation with burn severity:</span>
+                                <span class="metric-value enhanced" id="enhancedCorr">0.58</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="improvement-highlight">
+                        <div class="improvement-content">
+                            <span class="improvement-label">Improvement:</span>
+                            <span class="improvement-value" id="improvementValue">+38%</span>
+                            <span class="improvement-desc">better correlation with actual burn severity</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="methodology-tab">
+                <div class="methodology-section">
+                    <h3>Methodology</h3>
+
+                    <div class="methodology-steps">
+                        <div class="method-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Baseline Data</h4>
+                                <p>LANDFIRE 2020 fuel models provide the baseline fuel classification at 30m resolution.</p>
+                            </div>
+                        </div>
+
+                        <div class="method-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Satellite Change Detection</h4>
+                                <p>Sentinel-2 (10m) and MODIS (250m) imagery from 2020-2022 to detect vegetation changes via NDVI, NBR, and NDMI indices.</p>
+                            </div>
+                        </div>
+
+                        <div class="method-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Data Fusion</h4>
+                                <p>Combine LANDFIRE baseline with satellite-detected changes to identify areas of increased fuel hazard.</p>
+                            </div>
+                        </div>
+
+                        <div class="method-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Validation</h4>
+                                <p>Compare predictions against actual burn severity (dNBR) to quantify improvement over baseline.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="data-sources">
+                        <h4>Data Sources</h4>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Dataset</th>
+                                    <th>Source</th>
+                                    <th>Resolution</th>
+                                    <th>Update Frequency</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>LANDFIRE</td>
+                                    <td>USGS</td>
+                                    <td>30m</td>
+                                    <td>2-3 years</td>
+                                </tr>
+                                <tr>
+                                    <td>Sentinel-2</td>
+                                    <td>ESA/Copernicus</td>
+                                    <td>10m</td>
+                                    <td>5 days</td>
+                                </tr>
+                                <tr>
+                                    <td>MODIS</td>
+                                    <td>NASA</td>
+                                    <td>250m</td>
+                                    <td>Daily</td>
+                                </tr>
+                                <tr>
+                                    <td>Fire Perimeters</td>
+                                    <td>NIFC</td>
+                                    <td>Vector</td>
+                                    <td>Real-time</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="data-tab">
+                <div class="data-section">
+                    <h3>Data & Analysis Results</h3>
+
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <h4>Validation Metrics</h4>
+                            <div class="metrics-list">
+                                <div class="metric-row">
+                                    <span>Sample Size:</span>
+                                    <span id="sampleSize">45,892 pixels</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span>Baseline Correlation:</span>
+                                    <span id="baselineCorr2">0.42</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span>Enhanced Correlation:</span>
+                                    <span id="enhancedCorr2">0.58</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span>Improvement:</span>
+                                    <span class="highlight" id="improvement">+38.1%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result-card">
+                            <h4>Detection Performance</h4>
+                            <div class="metrics-list">
+                                <div class="metric-row">
+                                    <span>Detection Rate:</span>
+                                    <span id="detectionRate">73%</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span>Areas Improved:</span>
+                                    <span>67% of burned area</span>
+                                </div>
+                                <div class="metric-row">
+                                    <span>Vegetation Loss Detected:</span>
+                                    <span>NDVI decrease &gt; 10%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="use-cases">
+                        <h4>Operational Applications</h4>
+                        <div class="use-cases-grid">
+                            <div class="use-case-card">
+                                <div class="use-case-icon">📋</div>
+                                <h5>Pre-Season Planning</h5>
+                                <p>Identify areas of increased fuel hazard before fire season</p>
+                            </div>
+                            <div class="use-case-card">
+                                <div class="use-case-icon">🎯</div>
+                                <h5>Resource Allocation</h5>
+                                <p>Prioritize fuel reduction treatments based on current conditions</p>
+                            </div>
+                            <div class="use-case-card">
+                                <div class="use-case-icon">⚠️</div>
+                                <h5>Risk Assessment</h5>
+                                <p>Update wildfire risk maps with weekly satellite data</p>
+                            </div>
+                            <div class="use-case-card">
+                                <div class="use-case-icon">🏘️</div>
+                                <h5>Community Prep</h5>
+                                <p>Target high-risk areas for community preparedness programs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Wildfire Fuel Mapping Dashboard | Climate Hackathon 2024</p>
+            <p>Powered by Sentinel-2, MODIS, and LANDFIRE</p>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

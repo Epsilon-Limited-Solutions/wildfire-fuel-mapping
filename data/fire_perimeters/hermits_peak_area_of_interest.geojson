@@ -1,0 +1,45 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hermits Peak / Calf Canyon Fire 2022",
+        "fire_name": "HERMITS PEAK",
+        "acres": 341735,
+        "fire_year": 2022,
+        "start_date": "2022-04-06",
+        "contain_date": "2022-08-21",
+        "note": "Approximate boundary - use for area of interest definition",
+        "source": "Manually created from reported fire statistics"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -105.9,
+              35.6
+            ],
+            [
+              -105.9,
+              36.0
+            ],
+            [
+              -105.3,
+              36.0
+            ],
+            [
+              -105.3,
+              35.6
+            ],
+            [
+              -105.9,
+              35.6
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

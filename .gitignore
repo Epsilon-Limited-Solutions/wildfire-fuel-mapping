@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Data files (too large for git)
+data/landfire/*.tif
+data/satellite/**/*.tif
+data/processed/*.tif
+data/results/*.tif
+*.tif
+*.tiff
+
+# Outputs (generated) - but keep presentation images!
+outputs/**/*.html
+outputs/**/*.pdf
+outputs/**/*.png
+
+# EXCEPT: Keep presentation images and key visualizations
+!outputs/presentation/*.png
+!outputs/validation/*.png
+!outputs/change_maps/change_summary.png
+!outputs/burn_severity/burn_severity_map.png
+!outputs/enhanced_fuel/comparison_map.png
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+.claude/
+
+# Credentials
+config/*.env
+!config/credentials_template.env
+*.key
+
+# Keep JSON statistics (they're small and important)
+!*.json
+!outputs/**/*.json
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+lfps_response.html
+
+# Old/backup folders
+desert-dev-lab-2025/
+tf-hackathon/

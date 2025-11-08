@@ -1,0 +1,38 @@
+
+================================================================================
+LANDFIRE PRODUCT SERVICE - MANUAL INSTRUCTIONS
+================================================================================
+
+Since automated download may not work immediately, here's how to use the web
+interface manually (takes 5-10 minutes):
+
+1. Go to: https://lfps.usgs.gov
+
+2. Fill in the form:
+
+   **Layers (semicolon separated):**
+   220FBFM40;220CBD;220CH
+
+   **Area of Interest (comma separated coordinates):**
+   -105.9,35.6,-105.3,36.0
+
+   **Projection:**
+   GEO (or ALBERS)
+
+   **Resolution:**
+   30
+
+3. Click "Submit" or "Process"
+
+4. Wait for processing (usually 30-60 seconds)
+
+5. Download the resulting GeoTIFF file
+
+6. Save to: /Users/thomasduquemin/epsilon/applications/hackathon/data/landfire
+
+Expected output:
+  - Multi-band GeoTIFF with all 3 layers
+  - Size: ~100-200 MB
+  - Bands: FBFM40, CBD, CH
+
+================================================================================

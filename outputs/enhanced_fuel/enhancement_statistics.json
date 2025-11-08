@@ -1,0 +1,20 @@
+{
+  "fuel_risk_score": {
+    "mean": 48.84984588623047,
+    "std": 17.32730484008789,
+    "high_risk_percent": 31.358925618655505,
+    "moderate_risk_percent": 36.37138671735659,
+    "low_risk_percent": 32.2696876639879
+  },
+  "fuel_load_adjustment": {
+    "mean_factor": 1.4884984493255615,
+    "max_factor": 1.9389350414276123,
+    "areas_increased_20pct": 94.9114009540826
+  },
+  "cbd_enhancement": {
+    "original_mean": 7.481845003590889,
+    "enhanced_mean": 10.924965858459473,
+    "mean_increase": 3.4431211948394775,
+    "percent_increase": 46.019676339406494
+  }
+}

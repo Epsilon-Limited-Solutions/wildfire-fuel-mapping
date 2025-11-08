@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  webapp:
+    build: .
+    container_name: wildfire-fuel-mapping-webapp
+    ports:
+      - "5000:5000"
+    volumes:
+      # Mount data directories (read-only)
+      - ../data:/app/data:ro
+      - ../outputs:/app/outputs:ro
+      # Mount maps directory to serve HTML maps
+      - ../outputs/maps:/app/frontend/static/maps:ro
+    environment:
+      - FLASK_ENV=production
+      - FLASK_APP=backend/app.py
+    restart: unless-stopped
+    networks:
+      - wildfire-network
+
+networks:
+  wildfire-network:
+    driver: bridge

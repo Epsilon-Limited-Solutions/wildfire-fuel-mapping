@@ -1,0 +1,43 @@
+{
+  "correlation_analysis": {
+    "landfire_r2": 0.09653876585287317,
+    "landfire_pearson_r": -0.31070688092295795,
+    "enhanced_r2": 0.13815525415301028,
+    "enhanced_pearson_r": -0.3716924187456751,
+    "improvement_percent": 43.10857709074237,
+    "absolute_improvement": 0.0416164883001371
+  },
+  "statistical_significance": {
+    "landfire_p_value": 0.0,
+    "enhanced_p_value": 0.0,
+    "both_significant": true
+  },
+  "by_severity_class": {
+    "Unburned": {
+      "landfire_cbd": 8.604534862857493,
+      "enhanced_risk": 52.449368536913546,
+      "count": 1694296
+    },
+    "Low": {
+      "landfire_cbd": 8.74557880330259,
+      "enhanced_risk": 45.944405501837025,
+      "count": 335373
+    },
+    "Mod-Low": {
+      "landfire_cbd": 5.259025645281766,
+      "enhanced_risk": 45.946999593497544,
+      "count": 156637
+    },
+    "Mod-High": {
+      "landfire_cbd": 2.142782160028918,
+      "enhanced_risk": 40.90696063195799,
+      "count": 201951
+    },
+    "High": {
+      "landfire_cbd": 0.2522887323943662,
+      "enhanced_risk": 29.38261917931903,
+      "count": 119280
+    }
+  },
+  "sample_size": 2522864
+}

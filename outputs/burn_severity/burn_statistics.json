@@ -1,0 +1,21 @@
+{
+  "dnbr": {
+    "mean": 0.1168580874800682,
+    "std": 0.23264630138874054,
+    "min": -0.7208150029182434,
+    "max": 1.342705249786377
+  },
+  "burn_severity_distribution": {
+    "unburned_percent": 67.55792922902512,
+    "low_severity_percent": 13.373750480197074,
+    "moderate_low_percent": 6.2390494918641854,
+    "moderate_high_percent": 8.071736741859484,
+    "high_severity_percent": 4.757534057054129,
+    "total_burned_percent": 32.44207077097488
+  },
+  "nbr_change": {
+    "pre_fire_mean": 0.3477373421192169,
+    "post_fire_mean": 0.2308792620897293,
+    "mean_change": 0.1168580874800682
+  }
+}
