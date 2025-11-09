@@ -19,14 +19,14 @@ data/results/*.tif
 # Outputs (generated) - but keep presentation images!
 outputs/**/*.html
 outputs/**/*.pdf
-outputs/**/*.png
+# outputs/**/*.png
 
 # EXCEPT: Keep presentation images and key visualizations
-!outputs/presentation/*.png
-!outputs/validation/*.png
-!outputs/change_maps/change_summary.png
-!outputs/burn_severity/burn_severity_map.png
-!outputs/enhanced_fuel/comparison_map.png
+# !outputs/presentation/*.png
+# !outputs/validation/*.png
+# !outputs/change_maps/change_summary.png
+# !outputs/burn_severity/burn_severity_map.png
+# !outputs/enhanced_fuel/comparison_map.png
 
 # IDE
 .vscode/
