@@ -291,13 +291,12 @@ print("  ✓ Saved 04_validation.png")
 ##############################################################################
 print("\n7. Creating Image 5: Summary...")
 
-fig = plt.figure(figsize=(16, 10))
-fig.suptitle('Project Summary: Wildfire Fuel Mapping Enhancement',
-             fontsize=20, fontweight='bold')
+fig = plt.figure(figsize=(16, 11))
 
-# Create text summary
+# Create text summary (title is included in the text itself, no fig.suptitle needed)
 summary_text = f"""
 ╔══════════════════════════════════════════════════════════════════════════╗
+║           WILDFIRE FUEL MAPPING ENHANCEMENT - PROJECT SUMMARY            ║
 ║                        HERMITS PEAK FIRE - 2022                          ║
 ║                  New Mexico's Largest Fire (341,735 acres)               ║
 ╚══════════════════════════════════════════════════════════════════════════╝
@@ -369,10 +368,10 @@ NEXT STEPS:
 ax = fig.add_subplot(111)
 ax.axis('off')
 ax.text(0.5, 0.5, summary_text, transform=ax.transAxes,
-       fontsize=10, va='center', ha='center', family='monospace',
-       bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
+       fontsize=9.5, va='center', ha='center', family='monospace',
+       bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.4))
 
-plt.tight_layout()
+plt.subplots_adjust(left=0.05, right=0.95, top=0.98, bottom=0.02)
 plt.savefig(PRESENTATION_DIR / "05_summary.png", dpi=150, bbox_inches='tight')
 print("  ✓ Saved 05_summary.png")
 plt.close()
