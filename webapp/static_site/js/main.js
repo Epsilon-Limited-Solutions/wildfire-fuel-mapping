@@ -91,7 +91,7 @@ function createMapCard(map) {
     card.innerHTML = `
         <h4>${map.displayName}</h4>
         <p>${map.description}</p>
-        <button class="map-card-button" onclick="loadMap('${map.url}')">View Map</button>
+        <button class="map-card-button" onclick="loadMap('${map.url}')">View</button>
     `;
 
     return card;
