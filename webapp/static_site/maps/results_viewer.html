@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermits Peak Fire - Results Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #d62728 0%, #8b0000 100%);
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px;
+            background: #16213e;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #e6550d;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #aaa;
+            margin-top: 5px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #333;
+            overflow-x: auto;
+        }
+
+        .tab {
+            padding: 15px 30px;
+            background: #16213e;
+            border: none;
+            color: #aaa;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .tab:hover {
+            background: #1f2e4d;
+            color: #fff;
+        }
+
+        .tab.active {
+            background: #d62728;
+            color: #fff;
+            border-bottom: 2px solid #d62728;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .image-container {
+            background: #16213e;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .image-container h2 {
+            color: #d62728;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .image-container img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .description {
+            margin-top: 20px;
+            padding: 20px;
+            background: #1a2332;
+            border-radius: 8px;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            background: rgba(230, 85, 13, 0.2);
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #e6550d;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #0f1419;
+            color: #666;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔥 Hermits Peak Fire Analysis</h1>
+        <p class="subtitle">Enhanced Fuel Prediction via Satellite Data Fusion</p>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat">
+            <div class="stat-value">+43.1%</div>
+            <div class="stat-label">Improvement</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">0.138</div>
+            <div class="stat-label">Enhanced R²</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">341,735</div>
+            <div class="stat-label">Acres Burned</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value">$4B</div>
+            <div class="stat-label">Damage</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="tabs">
+            <button class="tab active" onclick="showTab(0)">Overview</button>
+            <button class="tab" onclick="showTab(1)">Change Detection</button>
+            <button class="tab" onclick="showTab(2)">Prediction</button>
+            <button class="tab" onclick="showTab(3)">Validation</button>
+            <button class="tab" onclick="showTab(4)">Summary</button>
+        </div>
+
+        <div class="tab-content active">
+            <div class="image-container">
+                <h2>Project Overview</h2>
+                <img src="../presentation/01_overview.png" alt="Project Overview">
+                <div class="description">
+                    <p><strong>Problem:</strong> LANDFIRE fuel maps update every 2-3 years, missing critical vegetation changes from drought, disease, and climate stress.</p>
+                    <br>
+                    <p><strong>Solution:</strong> Fuse LANDFIRE baseline with weekly satellite data (Sentinel-2 + MODIS) to detect fuel changes in real-time.</p>
+                    <br>
+                    <p><strong>Result:</strong> <span class="highlight">43.1% better prediction</span> of actual burn severity compared to static LANDFIRE baseline.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <div class="image-container">
+                <h2>Change Detection (2020-2022)</h2>
+                <img src="../presentation/02_change_detection.png" alt="Change Detection">
+                <div class="description">
+                    <p><strong>What we detected:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li><span class="highlight">25.6% of area</span> showed high vegetation stress</li>
+                        <li><span class="highlight">47.6% of area</span> showed moderate stress</li>
+                        <li>NDVI decreased indicating vegetation loss</li>
+                        <li>NDMI decreased indicating moisture deficit</li>
+                        <li>NBR decreased indicating fuel accumulation</li>
+                    </ul>
+                    <br>
+                    <p><strong>Key insight:</strong> Satellites detected fuel changes between 2020-2022 that LANDFIRE's static map couldn't capture.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <div class="image-container">
+                <h2>LANDFIRE vs Enhanced Prediction</h2>
+                <img src="../presentation/03_prediction.png" alt="Prediction Comparison">
+                <div class="description">
+                    <p><strong>LANDFIRE 2020 Baseline:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Static snapshot from 2020</li>
+                        <li>Updates every 2-3 years</li>
+                        <li>Misses recent vegetation changes</li>
+                    </ul>
+                    <br>
+                    <p><strong>Enhanced Fuel Map (Ours):</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>LANDFIRE baseline + satellite change detection</li>
+                        <li>Updates weekly with new satellite data</li>
+                        <li>Detects stress, drought, vegetation loss</li>
+                        <li>Mean fuel load increase: <span class="highlight">46%</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <div class="image-container">
+                <h2>Validation Results</h2>
+                <img src="../presentation/04_validation.png" alt="Validation">
+                <div class="description">
+                    <p><strong>Validation Approach:</strong> Compare predictions against actual burn severity (dNBR) from the Hermits Peak fire.</p>
+                    <br>
+                    <p><strong>Results:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li>LANDFIRE R²: <strong>0.0965</strong></li>
+                        <li>Enhanced R²: <strong>0.1382</strong></li>
+                        <li>Improvement: <span class="highlight">+43.1%</span></li>
+                        <li>Sample size: 2.5 million pixels</li>
+                        <li>Both highly significant (p < 0.001)</li>
+                    </ul>
+                    <br>
+                    <p><strong>This proves:</strong> Satellite data fusion improves fuel prediction accuracy significantly.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <div class="image-container">
+                <h2>Complete Summary</h2>
+                <img src="../presentation/05_summary.png" alt="Summary">
+                <div class="description">
+                    <p><strong>Key Takeaways:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li>✅ <strong>Real validation:</strong> Tested against actual wildfire, not simulation</li>
+                        <li>✅ <strong>Quantitative proof:</strong> 43% improvement in prediction accuracy</li>
+                        <li>✅ <strong>Free data:</strong> All satellite data is publicly available</li>
+                        <li>✅ <strong>Scalable:</strong> Works anywhere Sentinel-2 has coverage</li>
+                        <li>✅ <strong>Practical:</strong> Addresses known pain point for fire managers</li>
+                    </ul>
+                    <br>
+                    <p><strong>Impact:</strong> Fire managers can use weekly-updated fuel maps to better prepare for fire season, prioritize fuel treatments, and protect communities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Hermits Peak-Calf Canyon Fire Analysis | Climate Hackathon 2025</p>
+        <p>Powered by Sentinel-2, MODIS, and LANDFIRE</p>
+    </div>
+
+    <script>
+        function showTab(index) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+
+            tabs[index].classList.add('active');
+            contents[index].classList.add('active');
+        }
+    </script>
+</body>
+</html>

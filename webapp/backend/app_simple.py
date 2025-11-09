@@ -115,6 +115,16 @@ python run.py --step map</pre>
         """, 404
 
 
+@app.route('/presentation/<path:filename>')
+def serve_presentation(filename):
+    """Serve presentation images"""
+    presentation_dir = Path('/app/outputs/presentation')
+    if presentation_dir.exists() and (presentation_dir / filename).exists():
+        return send_from_directory(presentation_dir, filename)
+    else:
+        return jsonify({'error': 'Image not found'}), 404
+
+
 @app.route('/api/health')
 def health_check():
     """Health check endpoint"""

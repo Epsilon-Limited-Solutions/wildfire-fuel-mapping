@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Detection (2020-2022)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #1a1a2e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .title {
+            color: #d62728;
+            font-family: Arial, sans-serif;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .description {
+            color: #eee;
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin-top: 20px;
+            line-height: 1.6;
+            background: #16213e;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .highlight {
+            color: #e6550d;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">Satellite Change Detection (2020-2022)</h1>
+    <img src="../presentation/02_change_detection.png" alt="Change Detection">
+    <div class="description">
+        <p><strong>What satellites detected:</strong></p>
+        <ul style="margin-left: 20px; margin-top: 10px;">
+            <li><span class="highlight">25.6% of area</span> showed high vegetation stress</li>
+            <li><span class="highlight">47.6% of area</span> showed moderate stress</li>
+            <li>NDVI decreased (vegetation loss)</li>
+            <li>NDMI decreased (moisture deficit)</li>
+            <li>NBR decreased (fuel accumulation)</li>
+        </ul>
+        <p style="margin-top: 15px;"><strong>Key insight:</strong> Satellites detected fuel changes that LANDFIRE's static 2020 map couldn't capture.</p>
+    </div>
+</body>
+</html>

@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile.simple
     container_name: wildfire-fuel-mapping-webapp
     ports:
-      - "5000:5000"
+      - "8080:5000"
     volumes:
       # Mount data directories (read-only)
       - ../data:/app/data:ro

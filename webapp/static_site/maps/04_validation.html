@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Results</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #1a1a2e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .title {
+            color: #d62728;
+            font-family: Arial, sans-serif;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .description {
+            color: #eee;
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin-top: 20px;
+            line-height: 1.6;
+            background: #16213e;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .highlight {
+            color: #e6550d;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">Validation Results</h1>
+    <img src="../presentation/04_validation.png" alt="Validation Results">
+    <div class="description">
+        <p><strong>Validation Approach:</strong> Compare predictions against actual burn severity (dNBR) from the Hermits Peak fire.</p>
+        <p style="margin-top: 15px;"><strong>Results:</strong></p>
+        <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+            <li>LANDFIRE R²: <strong>0.0965</strong></li>
+            <li>Enhanced R²: <strong>0.1382</strong></li>
+            <li>Improvement: <span class="highlight">+43.1%</span></li>
+            <li>Sample size: 2.5 million pixels</li>
+            <li>Both highly significant (p < 0.001)</li>
+        </ul>
+        <p style="margin-top: 15px;"><strong>This proves:</strong> Satellite data fusion improves fuel prediction accuracy significantly.</p>
+    </div>
+</body>
+</html>

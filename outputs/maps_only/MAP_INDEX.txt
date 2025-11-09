@@ -1,0 +1,95 @@
+═══════════════════════════════════════════════════════════════════
+                    INDIVIDUAL MAP VISUALIZATIONS
+           Hermits Peak Fire - Enhanced Fuel Mapping Project
+═══════════════════════════════════════════════════════════════════
+
+CHANGE DETECTION MAPS (2020-2022)
+─────────────────────────────────────────────────────────────────────
+
+1. stress_score_map.png
+   │ Title: Vegetation Stress Score (2020-2022)
+   │ Shows: Combined stress from NDVI, NBR, NDMI
+   │ Scale: 0 (healthy) → 1 (severe stress)
+   │ Key Finding: 25.6% high stress, 47.6% moderate stress
+   └─ Size: 20 MB | Resolution: 300 DPI
+
+2. ndvi_change_map.png
+   │ Title: NDVI Change (2020-2022)
+   │ Shows: Vegetation density changes
+   │ Scale: -0.3 (loss) → +0.3 (gain)
+   │ Key Finding: Widespread vegetation loss detected
+   └─ Size: 15 MB | Resolution: 300 DPI
+
+3. nbr_change_map.png
+   │ Title: NBR Change (2020-2022)
+   │ Shows: Normalized burn ratio changes
+   │ Scale: -0.3 → +0.3
+   │ Key Finding: Negative = fuel accumulation
+   └─ Size: 14 MB | Resolution: 300 DPI
+
+4. ndmi_change_map.png
+   │ Title: NDMI Change (2020-2022)
+   │ Shows: Moisture content changes
+   │ Scale: -0.3 (deficit) → +0.3 (surplus)
+   │ Key Finding: Widespread moisture deficit
+   └─ Size: 9.5 MB | Resolution: 300 DPI
+
+ENHANCED FUEL MAPS
+─────────────────────────────────────────────────────────────────────
+
+5. fuel_load_map.png
+   │ Title: Enhanced Fuel Load Factor
+   │ Shows: LANDFIRE + satellite-detected changes
+   │ Scale: 1.0 (baseline) → 2.0 (double)
+   │ Key Finding: Mean 46% fuel load increase
+   └─ Size: 5.8 MB | Resolution: 300 DPI
+
+6. fuel_risk_map.png
+   │ Title: Fuel Risk Score (Enhanced)
+   │ Shows: Comprehensive fire risk
+   │ Scale: 0 (low) → 10 (extreme)
+   │ Key Finding: Updated weekly with satellites
+   └─ Size: 197 KB | Resolution: 300 DPI
+
+BURN SEVERITY MAPS (ACTUAL FIRE)
+─────────────────────────────────────────────────────────────────────
+
+7. burn_severity_map.png
+   │ Title: Actual Burn Severity (dNBR)
+   │ Shows: Ground truth from Hermits Peak fire
+   │ Scale: 0 → 800 dNBR
+   │ Key Finding: Used for validation
+   └─ Size: 118 KB | Resolution: 300 DPI
+
+8. burn_severity_classified_map.png
+   │ Title: Burn Severity Classification
+   │ Shows: Categorized severity levels
+   │ Classes: Unburned | Low | Mod-Low | Mod-High | High | Extreme
+   │ Key Finding: R² correlation = 0.138 with enhanced map
+   └─ Size: 1.5 MB | Resolution: 300 DPI
+
+═══════════════════════════════════════════════════════════════════
+VALIDATION RESULTS
+═══════════════════════════════════════════════════════════════════
+
+Baseline (LANDFIRE 2020):           R² = 0.0965
+Enhanced (LANDFIRE + Satellite):    R² = 0.1382
+Improvement:                        +43.1%
+
+Sample size: 2,522,864 pixels
+Statistical significance: p < 0.001
+
+═══════════════════════════════════════════════════════════════════
+TECHNICAL SPECIFICATIONS
+═══════════════════════════════════════════════════════════════════
+
+Format:     PNG (24-bit color)
+Resolution: 300 DPI
+Dimensions: 3600 x 3000 pixels (12" x 10")
+Projection: UTM Zone 13N (EPSG:32613)
+Study Area: Hermits Peak-Calf Canyon Fire, New Mexico
+Fire Date:  April - August 2022
+Fire Size:  341,735 acres
+Damage:     $4 billion
+
+═══════════════════════════════════════════════════════════════════

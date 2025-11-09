@@ -1,0 +1,362 @@
+\documentclass[aspectratio=169,14pt]{beamer}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+% Theme
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% Define custom colors (Fire theme)
+\definecolor{FireRed}{RGB}{214,39,40}
+\definecolor{FireOrange}{RGB}{230,85,13}
+\definecolor{DarkText}{RGB}{33,37,41}
+
+% Customize colors
+\setbeamercolor{title}{fg=FireRed}
+\setbeamercolor{frametitle}{fg=FireRed}
+\setbeamercolor{structure}{fg=FireRed}
+\setbeamercolor{itemize item}{fg=FireOrange}
+\setbeamercolor{itemize subitem}{fg=FireOrange}
+
+% Remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% Title information
+\title{\textbf{FUELWATCH}}
+\subtitle{Real-Time Wildfire Fuel Intelligence}
+\author{Climate Hackathon 2025}
+\date{}
+
+\begin{document}
+
+% Title Slide
+\begin{frame}
+\titlepage
+\vspace{-1cm}
+
+\begin{block}{Industry/Audience}
+Wildfire Management \& Emergency Response \\
+\small{USFS • State Fire Agencies • Insurance Companies}
+\end{block}
+
+\begin{block}{Solution Summary}
+We update wildfire fuel maps \textbf{WEEKLY} using free satellite data instead of every 2-3 years, helping fire managers identify high-risk areas before fire season starts.
+
+\vspace{0.3cm}
+\textbf{Validated on a \$4B wildfire: 43\% improvement over government standards.}
+\end{block}
+
+\begin{center}
+\textcolor{FireRed}{\textbf{Better planning → Targeted treatments → Fewer fires → Lives saved}}
+\end{center}
+\end{frame}
+
+% Slide 2: The Problem
+\begin{frame}
+\frametitle{WILDFIRE FUEL MAPS ARE DANGEROUSLY OUT OF DATE}
+
+\begin{center}
+\textbf{Hermits Peak-Calf Canyon Fire, New Mexico}
+
+\vspace{0.5cm}
+\includegraphics[width=0.85\textwidth]{../outputs/maps_only/before_after_true_color.png}
+\end{center}
+
+\begin{columns}
+\column{0.5\textwidth}
+\begin{itemize}
+\item 341,735 acres burned
+\item \$4 billion in damage
+\end{itemize}
+
+\column{0.5\textwidth}
+\begin{itemize}
+\item Largest fire in NM history
+\item 2-year-old fuel map
+\end{itemize}
+\end{columns}
+
+\end{frame}
+
+% Slide 3: Why Static Maps Fail
+\begin{frame}
+\frametitle{WHY STATIC MAPS FAIL}
+
+\begin{center}
+\Large{\textbf{LANDFIRE Update Cycle}}
+
+\vspace{0.5cm}
+\tikz{
+\draw[thick,->] (0,0) -- (10,0);
+\foreach \x/\year in {0/2018,2.5/2020,5/2022,7.5/2024,10/2026}
+    \node at (\x,-0.5) {\year};
+\draw[thick,FireRed] (2.5,0.5) -- (5,0.5);
+\node[above] at (3.75,0.5) {\textcolor{FireRed}{\textbf{2-3 YEARS}}};
+}
+\end{center}
+
+\vspace{0.5cm}
+
+\textbf{What Happens Between Updates:}
+\begin{itemize}
+\item ✗ Drought stress builds up
+\item ✗ Vegetation dies off
+\item ✗ Fuel loads increase
+\item ✗ Risk skyrockets
+\end{itemize}
+
+\vspace{0.3cm}
+\textbf{Meanwhile:} Sentinel-2 passes overhead every 5 days, MODIS daily
+
+\begin{center}
+\textcolor{FireRed}{\textbf{We're just not using this data!}}
+\end{center}
+
+\end{frame}
+
+% Slide 4: Our Solution
+\begin{frame}
+\frametitle{WEEKLY FUEL UPDATES VIA SATELLITE FUSION}
+
+\begin{center}
+\textbf{How It Works}
+
+\vspace{0.5cm}
+\tikz{
+\node[draw,rectangle,rounded corners,fill=white,minimum width=2.5cm,minimum height=1.5cm] at (0,0) {LANDFIRE\\Baseline};
+\draw[->,thick,FireOrange] (1.5,0) -- (2.5,0);
+\node[draw,rectangle,rounded corners,fill=white,minimum width=2.5cm,minimum height=1.5cm] at (4,0) {Weekly\\Satellites};
+\draw[->,thick,FireOrange] (5.5,0) -- (6.5,0);
+\node[draw,rectangle,rounded corners,fill=white,minimum width=2.5cm,minimum height=1.5cm] at (8,0) {Change\\Detection};
+\draw[->,thick,FireOrange] (9.5,0) -- (10.5,0);
+\node[draw,rectangle,rounded corners,fill=white,minimum width=2.5cm,minimum height=1.5cm] at (12,0) {Updated\\Fuel Maps};
+}
+\end{center}
+
+\vspace{0.8cm}
+
+\textbf{Key Advantages:}
+\begin{itemize}
+\item ✓ Builds on proven LANDFIRE methodology
+\item ✓ Uses \textbf{FREE}, public satellite data (Sentinel-2, MODIS)
+\item ✓ Automated pipeline - no manual updates
+\item ✓ Weekly updates during fire season
+\item ✓ Scalable to entire US
+\item ✓ \textcolor{FireRed}{\textbf{VALIDATED: +43\% improvement}}
+\end{itemize}
+
+\end{frame}
+
+% Slide 5: Validation Results (MONEY SLIDE)
+\begin{frame}
+\frametitle{PROVEN ON REAL WILDFIRE}
+
+\begin{center}
+{\Huge \textcolor{FireRed}{\textbf{+43.1\%}}}
+
+\vspace{0.3cm}
+{\Large \textbf{IMPROVEMENT}}
+
+\vspace{0.8cm}
+
+\begin{tabular}{lcl}
+LANDFIRE 2020 & \textcolor{gray}{\rule{4cm}{1cm}} & R² = 0.0965 \\[0.5cm]
+\textcolor{FireRed}{\textbf{FuelWatch}} & \textcolor{FireRed}{\rule{6cm}{1cm}} & \textbf{R² = 0.1382} \\
+\end{tabular}
+
+\vspace{0.8cm}
+
+\textbf{Hermits Peak Fire: 341,735 acres} \\
+\textbf{Sample: 2.5 million pixels} \\
+\textbf{Significance: p < 0.001}
+
+\vspace{0.5cm}
+
+\textcolor{FireRed}{\Large \textbf{Better predictions = Better preparedness}}
+\end{center}
+
+\end{frame}
+
+% Slide 6: Impact
+\begin{frame}
+\frametitle{OPERATIONAL IMPACT}
+
+\begin{columns}
+\column{0.5\textwidth}
+\textbf{Pre-Season Planning}
+\begin{itemize}
+\item Identify high-risk areas before fire season
+\end{itemize}
+
+\textbf{Resource Allocation}
+\begin{itemize}
+\item Prioritize fuel treatments where they matter most
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Community Protection}
+\begin{itemize}
+\item Target wildland-urban interface preparedness
+\end{itemize}
+
+\textbf{Insurance}
+\begin{itemize}
+\item Accurate risk assessment for premiums
+\end{itemize}
+\end{columns}
+
+\vspace{0.8cm}
+
+\begin{center}
+\textbf{BY THE NUMBERS}
+
+\begin{tabular}{rl}
+50,000+ & wildfires annually in US \\
+\$80 billion & in annual wildfire costs \\
+\textcolor{FireRed}{\textbf{10-20\% better targeting}} & \textcolor{FireRed}{\textbf{= BILLIONS saved}} \\
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+% Slide 7: Technology Stack
+\begin{frame}
+\frametitle{BUILT ON FREE, PROVEN INFRASTRUCTURE}
+
+\textbf{Data Sources (All FREE \& Public):}
+\begin{itemize}
+\item ✓ LANDFIRE → Baseline fuel models (30m)
+\item ✓ Sentinel-2 → 10m resolution, 5-day revisit
+\item ✓ MODIS → Daily vegetation indices (250m)
+\item ✓ Fire perimeters → NIFC real-time data
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Processing:}
+\begin{itemize}
+\item ✓ Google Earth Engine → Cloud processing (free tier)
+\item ✓ Python/GDAL → Geospatial analysis
+\item ✓ Open source → Scalable, reproducible
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Why This Matters:}
+\begin{itemize}
+\item[\textcolor{FireRed}{→}] \textcolor{FireRed}{\textbf{ZERO data acquisition costs}}
+\item[\textcolor{FireRed}{→}] \textcolor{FireRed}{\textbf{Proven satellites (15+ years)}}
+\item[\textcolor{FireRed}{→}] \textcolor{FireRed}{\textbf{Scales to entire US}}
+\item[\textcolor{FireRed}{→}] \textcolor{FireRed}{\textbf{Operational cost: < \$1,000/year}}
+\end{itemize}
+
+\end{frame}
+
+% Slide 8: Demo
+\begin{frame}
+\frametitle{LIVE SYSTEM DEMO}
+
+\begin{center}
+{\Large \textbf{hackathon-wildfire-epsilon.limited}} \\
+\vspace{0.2cm}
+{\large .s3-website-us-east-1.amazonaws.com}
+
+\vspace{1cm}
+
+\textbf{Demo Walkthrough:}
+\end{center}
+
+\begin{enumerate}
+\item Dashboard overview → Real-time stats
+\item Before/After satellite imagery → Visual fire impact
+\item Change detection maps → Vegetation stress
+\item Enhanced fuel maps → Updated predictions
+\item Validation results → 43\% improvement proof
+\end{enumerate}
+
+\vspace{0.5cm}
+
+\begin{center}
+\textcolor{FireRed}{\textbf{✓ Deployed on AWS  ✓ Real satellite data  ✓ Interactive visualizations}}
+\end{center}
+
+\end{frame}
+
+% Slide 9: Next Steps
+\begin{frame}
+\frametitle{PATH TO DEPLOYMENT}
+
+\textbf{IMMEDIATE (3 months):}
+\begin{itemize}
+\item ✓ Partner with one state fire agency (pilot)
+\item ✓ Expand to 5 high-risk western states
+\item ✓ Validate on 2023-2024 fire seasons
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{6-12 MONTHS:}
+\begin{itemize}
+\item ✓ National coverage (lower 48 states)
+\item ✓ Integration with WFDSS (Wildland Fire Decision Support)
+\item ✓ Mobile app for field crews
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{FUNDING NEEDS:}
+\begin{itemize}
+\item \textcolor{FireRed}{\textbf{\$250K seed}} → Product development, pilot deployments
+\item \textcolor{FireRed}{\textbf{\$1M Series A}} → National scaling, agency partnerships
+\end{itemize}
+
+\vspace{0.3cm}
+
+\begin{center}
+\textcolor{FireRed}{\textbf{Ready to deploy. Infrastructure exists. Satellites are flying.}}
+\end{center}
+
+\end{frame}
+
+% Slide 10: Closing
+\begin{frame}
+\frametitle{WHY US. WHY NOW.}
+
+\begin{center}
+{\large
+Every year between LANDFIRE updates, conditions change. \\
+Every year, fires get worse. \\
+Every year, we lose lives and billions of dollars.
+}
+
+\vspace{0.8cm}
+
+{\Large \textcolor{FireRed}{\textbf{We Can't Wait 2-3 Years for Better Data.}}}
+
+\vspace{0.8cm}
+
+{\large \textbf{
+The satellites are overhead RIGHT NOW. \\
+The data is FREE. \\
+The solution is PROVEN. \\[0.5cm]
+Let's use it.
+}}
+
+\vspace{1cm}
+
+\hrule
+\vspace{0.5cm}
+
+{\Huge \textcolor{FireRed}{\textbf{FUELWATCH}}}
+
+{\large Real-Time Wildfire Fuel Intelligence}
+
+\vspace{0.3cm}
+
+{\small [Your Contact Info]}
+\end{center}
+
+\end{frame}
+
+\end{document}

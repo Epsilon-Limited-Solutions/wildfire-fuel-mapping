@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LANDFIRE vs Enhanced Prediction</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #1a1a2e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .title {
+            color: #d62728;
+            font-family: Arial, sans-serif;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .description {
+            color: #eee;
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin-top: 20px;
+            line-height: 1.6;
+            background: #16213e;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .highlight {
+            color: #e6550d;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">LANDFIRE vs Enhanced Prediction</h1>
+    <img src="../presentation/03_prediction.png" alt="Prediction Comparison">
+    <div class="description">
+        <p><strong>LANDFIRE 2020:</strong> Static snapshot, updates every 2-3 years</p>
+        <p><strong>Enhanced (Ours):</strong> LANDFIRE + satellite fusion, weekly updates</p>
+        <p style="margin-top: 15px;"><span class="highlight">Mean fuel load increase: 46%</span></p>
+        <p>Detected stress, drought, and vegetation loss that LANDFIRE missed.</p>
+    </div>
+</body>
+</html>

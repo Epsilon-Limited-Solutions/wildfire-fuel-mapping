@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Overview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #1a1a2e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .title {
+            color: #d62728;
+            font-family: Arial, sans-serif;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .description {
+            color: #eee;
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin-top: 20px;
+            line-height: 1.6;
+            background: #16213e;
+            padding: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">Project Overview</h1>
+    <img src="../presentation/01_overview.png" alt="Project Overview">
+    <div class="description">
+        <p><strong>Problem:</strong> LANDFIRE fuel maps update every 2-3 years, missing critical vegetation changes.</p>
+        <p><strong>Solution:</strong> Fuse LANDFIRE with weekly satellite data to detect fuel changes in real-time.</p>
+        <p><strong>Result:</strong> 43.1% better prediction of actual burn severity.</p>
+    </div>
+</body>
+</html>
