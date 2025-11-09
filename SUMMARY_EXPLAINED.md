@@ -1,4 +1,4 @@
-# What We Actually Did - Plain English Explanation
+# FuelWatch - What We Actually Did - Plain English Explanation
 
 **TL;DR:** We improved wildfire fuel predictions by 43% by combining static government maps with real-time satellite data.
 

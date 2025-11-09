@@ -1,4 +1,4 @@
-# Wildfire Fuel Mapping Enhancement
+# FuelWatch - Wildfire Fuel Mapping Enhancement
 
 **Improving Fire Risk Predictions with Satellite Data Fusion**
 

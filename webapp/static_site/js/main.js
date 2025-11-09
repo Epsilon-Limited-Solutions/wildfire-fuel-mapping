@@ -1,4 +1,4 @@
-// Main JavaScript for Wildfire Fuel Mapping Viewer (Static Version)
+// Main JavaScript for FuelWatch (Static Version)
 
 // Static data - no API calls needed
 const STATIC_DATA = {
